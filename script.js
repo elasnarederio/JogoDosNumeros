@@ -41,9 +41,18 @@ async function iniciarJogo(){
             tentativasDisplay.textContent = `Tentativas: ${tentativas}`;
 
             inputPalpite.value= "";
+
+            if(mensagem.includes("acertou")){
+                tentativas = 0;
+                resultado.textContent += " O jogo será reiniciado!";
+                await gerarNumeroAleatorio();
+                tentativasDisplay.textContent = "";
+            }
                         
         } catch (erro) {
             resultado.textContent = erro;            
         }
     });
 }
+
+window.onload = iniciarJogo;
